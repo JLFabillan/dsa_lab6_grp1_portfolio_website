@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import math, os
+import os
 from modules.queue import Queue
 from modules.dequeue import DeQueue
 
