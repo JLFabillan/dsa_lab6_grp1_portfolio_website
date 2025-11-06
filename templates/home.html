@@ -1,7 +1,12 @@
-{% extends "_base.html" %}
-
-{% block title %}Home{% endblock %}
+{% extends "base.html" %}
+{% block title %}Home - Group 11{% endblock %}
 
 {% block content %}
-<p>HOME PAGE</p>
+<section id="home" class="section home">
+  <div class="content">
+    <h2>{{ index.message }}</h2>
+    <h2>{{ index.message_1 }}</h2>
+  </div>
+</section>
+
 {% endblock %}
