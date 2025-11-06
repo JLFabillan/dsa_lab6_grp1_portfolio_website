@@ -1,0 +1,42 @@
+/* APPLIES TO EVERY PAGES */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* FOR NAVBAR */
+.navbar{
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.navbar ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar li{
+    background-color: #0f0f10;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #b6a589;
+    border-radius: 25px;
+    height: 30px;
+    margin: 5px;
+}
+
+.navbar a{
+    height: 100%;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #fcbe56;
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+}
+
+.navbar a:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+}
