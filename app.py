@@ -10,7 +10,7 @@ deque_structure = Deque()
 
 @app.route('/')
 def home_redirect():
-    return redirect(url_for(index()))
+    return redirect(url_for('index'))
 
 #home page
 @app.route('/home')
