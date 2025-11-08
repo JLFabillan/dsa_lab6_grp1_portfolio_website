@@ -20,12 +20,8 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-}
-
-#bg-video {
   will-change: transform;
 }
-
 
 /* Header in Nav*/
 header {
@@ -201,4 +197,192 @@ a {
   font-weight: 700;
   margin-bottom: 30px;
   color: white;
+}
+
+/* QUEUE / DEQUE CONTAINER */
+.queue-wrapper {
+    margin-top: 50px;
+    padding: 25px;
+    width: 85%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 2px solid #00eaff;
+    box-shadow: 0 0 18px #00eaff70;
+    transition: transform .3s ease;
+}
+
+.queue-wrapper h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.queue-wrapper:hover {
+    transform: scale(1.02);
+}
+
+/* INPUT CONTAINER */
+.input-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.input-container input {
+    padding: 8px 12px;
+    width: 220px;
+    border-radius: 8px;
+    border: 2px solid #ff0084;
+    background: rgba(255, 255, 255, 0.05);
+    outline: none;
+    text-align: center;
+    color: #ffffff;
+}
+
+.input-container input:focus {
+    border-color: #00e1ff;
+    box-shadow: 0 0 10px #00e1ff;
+}
+
+/* Center button container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* Button style */
+.btn-glow {
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(38, 255, 0, 0.296),rgba(0, 229, 255, 0.373), rgba(117, 0, 125, 0.411));
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 0 8px #0000008a;
+}
+
+/* Hover glow effect */
+.btn-glow:hover {
+    background: #00e1ff;
+    color: #000000;
+    box-shadow: 0 0 15px #00e1ff;
+    transform: scale(1.05);
+}
+
+/* Active click effect */
+.btn-glow:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px #ffffff;
+}
+
+
+/* QUEUE DISPLAY LAYOUT */
+.queue-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* INDIVIDUAL BOX WITH ANIMATION */
+.queue-box {
+    background: linear-gradient(135deg, rgba(0,255,255,0.35), rgba(0,0,0,0.6));
+    padding: 16px 22px;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-radius: 12px;
+    border: 2px solid #00eaff;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 18px #00eaff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: fadeInScale 0.35s ease;
+}
+
+/* Hover effect */
+.queue-box:hover {
+    transform: translateY(-6px) scale(1.12);
+    box-shadow: 0 0 28px #00eaff;
+}
+
+/* Animation on append */
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.6); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* Highlight first and last element */
+.queue-box.head,
+.queue-box.front {
+    border-color: #00ff85;
+    box-shadow: 0 0 18px #00ff85;
+}
+.queue-box.tail,
+.queue-box.rear {
+    border-color: #ff00d4;
+    box-shadow: 0 0 18px #ff00d4;
+}
+
+
+/* HEAD / TAIL / LEFT / RIGHT labels */
+.queue-outer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: popIn 0.3s ease;
+}
+
+.label {
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #00eaff;
+    letter-spacing: 1px;
+}
+
+/* Direction arrows */
+.arrow {
+    font-size: 1.8em;
+    color: #00eaff;
+    margin: 0 6px;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {opacity: .3; transform: scale(1);}
+    50% {opacity: 1; transform: scale(1.2);}
+    100% {opacity: .3; transform: scale(1);}
+}
+
+/* Empty state */
+.empty-msg {
+    font-size: 1.2em;
+    color: #00eaff;
+    opacity: 0.7;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px; /* spacing between buttons */
+    margin-bottom: 20px;
+}
+
+.page-description {
+    text-align: center;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.626);
+    margin-top: -8px;
+    margin-bottom: 18px;
+    font-weight: 500;
 }

@@ -1,7 +1,46 @@
-{% extends "_base.html" %}
-
-{% block title %}Dequeue Visualizer{% endblock %}
-
+{% extends "base.html" %}
 {% block content %}
-<p>DEQUEUE VISUALIZER PAGE</p>
+
+<div class="queue-wrapper">
+    <h2>Deque</h2>
+<p class="page-description">A double-ended queue that allows insert/remove on both ends</p>
+
+<form method="POST" class="queue-form">
+    <div class = "input-container">
+        <input type="text" name="value" placeholder="Enter value" required>
+    </div>
+    <div class="button-container">
+        <button type="submit" name="action" value="left" class="btn-glow">Add Front</button>
+        <button type="submit" name="action" value="right" class="btn-glow"">Add Rear</button>
+        <button type="submit" name="action" value="remove_left" class="btn-glow" formnovalidate>Remove Front</button>
+        <button type="submit" name="action" value="remove_right" class="btn-glow" formnovalidate>Remove Rear</button>
+    </div>
+</form>
+
+
+
+<div class="queue-display">
+    {% if items|length == 0 %}
+        <div class="empty-msg">Queue is empty</div>
+    {% else %}
+        {% for item in items %}
+            <div class="queue-outer {% if loop.first %}head{% endif %} {% if loop.last %}tail{% endif %}">
+                {% if loop.first %}<span class="label">FRONT</span>{% endif %}
+                <div class="queue-box
+                    {% if loop.first %}front{% endif %}
+                    {% if loop.last %}rear{% endif %}
+                ">
+                    {{ item }}
+                </div>
+
+                {% if loop.last %}<span class="label">REAR</span>{% endif %}
+            </div>
+
+            {% if not loop.last %}
+                <span class="arrow">→</span>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+
 {% endblock %}

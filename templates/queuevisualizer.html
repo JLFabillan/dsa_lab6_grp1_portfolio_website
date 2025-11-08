@@ -1,7 +1,43 @@
-{% extends "_base.html" %}
-
-{% block title %}Queue visualizer{% endblock %}
-
+{% extends "base.html" %}
 {% block content %}
-<p>QUEUE VISUALIZER PAGE</p>
+
+<div class="queue-wrapper">
+    <h2>Queue</h2>
+<p class="page-description">A data structure that follows FIFO (First In, First Out)</p>
+
+<form method="POST" class="queue-form">
+    <div class = "input-container">
+        <input type="text" name="value" placeholder="Enter value" required>
+    </div>
+    <div class="button-container">
+        <button type="submit" name="enqueue" class="btn-glow">Enqueue</button>
+        <button type="submit" name="dequeue" class="btn-glow"formnovalidate>Dequeue</button>
+    </div>
+</form>
+
+
+<div class="queue-display">
+    {% if items|length == 0 %}
+        <div class="empty-msg">Queue is empty</div>
+    {% else %}
+        {% for item in items %}
+            <div class="queue-outer {% if loop.first %}head{% endif %} {% if loop.last %}tail{% endif %}">
+                {% if loop.first %}<span class="label">HEAD</span>{% endif %}
+                <div class="queue-box
+                    {% if loop.first %} head{% endif %}
+                    {% if loop.last %} tail{% endif %}
+                ">
+                    {{ item }}
+                </div>
+
+                {% if loop.last %}<span class="label">TAIL</span>{% endif %}
+            </div>
+
+            {% if not loop.last %}
+                <span class="arrow">→</span>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+
 {% endblock %}
