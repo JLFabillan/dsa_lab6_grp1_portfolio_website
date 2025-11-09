@@ -51,11 +51,11 @@ def members_contact():
     {
         
             "name": "Kyle Isaac Celin",
-            "image": "static/images/members/pic_2.png",
+            "image": "static/images/members/kyle.png",
             "links": {
                 "facebook": "https://www.facebook.com/cee.the.lin.e",
-                "email": "https://youtube.com/@zybanezz",#need update
-                "github": "https://tiktok.com/@zybanezz",#need update
+                "email": "mailto:celinkyleisaac@gmail.com",
+                "github": "https://github.com/ceetheline",
         }
     }, 
     {
@@ -73,9 +73,9 @@ def members_contact():
             "name": "Princess Sophia Manalo",
             "image": "static/images/members/sophia.jpg",
             "links": {
-                "facebook": "https://www.facebook.com/soapymk/"
-                "email": "mailto:manaloprincesssophia@gmail.com"
-                "github": "https://github.com/S0PHIA18"
+                "facebook": "https://www.facebook.com/soapymk/",
+                "email": "mailto:manaloprincesssophia@gmail.com",
+                "github": "https://github.com/S0PHIA18",
         }
     }, 
     {
