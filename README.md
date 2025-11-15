@@ -23,11 +23,11 @@
 │   │
 │   └── images/
 │       ├── members/
+│       │   ├── GIAN.png
 │       │   ├── isaac.jpg
 │       │   ├── jl.jpg
 │       │   ├── kyle.png
 │       │   ├── mark.jpg
-│       │   ├── pic_6.png
 │       │   ├── sophia.jpg
 │       │   └── zy.jpg
 │       │
