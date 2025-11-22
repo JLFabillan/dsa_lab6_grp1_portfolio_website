@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import os
 from modules.queue import Queue
 from modules.dequeue import DeQueue
+from modules.binary_tree import BinaryTree
 
 app = Flask(__name__)
 
