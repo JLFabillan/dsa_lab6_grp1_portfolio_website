@@ -147,6 +147,10 @@ def dequeue_visualizer():
         items=deque_structure.get_items(),
         active_page="works")
 
+# Binary Tree visualizer page
+@app.route('/works/binary-tree-visualizer')
+def binary_tree_visualizer():
+    return render_template("binarytreevisualizer.html")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
