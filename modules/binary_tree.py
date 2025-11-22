@@ -15,14 +15,28 @@ class BinaryTree:
     def __init__(self, root_data=None):
         self.root = Node(root_data) if root_data is not None else None
 
-    def insert_left(self):
-        pass
+    def insert_left(self, current_node, value):
+        if current_node.left is None:
+            current_node.left = Node(value)
+        else:
+            new_node = Node(value)
+            new_node.left = current_node.left
+            current_node.left = new_node
 
-    def insert_right(self):
-        pass
+    def insert_right(self, current_node, value):
+        if current_node.right is None:
+            current_node.right = Node(value)
+        else:
+            new_node = Node(value)
+            new_node.right = current_node.right
+            current_node.right = new_node
 
-    def postorder_traversal(self):
-        pass
+    def postorder_traversal(self, start, traversal):
+        if start:
+            traversal = self.postorder_traversal(start.left,traversal)
+            traversal = self.postorder_traversal(start.right,traversal)
+            traversal += (str(start.value) + " ")
+        return traversal
 
     def search(self):
         pass
