@@ -63,8 +63,59 @@ class BinaryTree:
         
         return None
 
-    def delete_node(self):
-        pass
+    def find_deepest_node(self):
+        if not self.root:
+            return None
+        
+        queue = [self.root]
+        last = None
+
+        while queue:
+            last = queue.pop(0)
+            if last.left:
+                queue.append(last.left)
+            if last.right:
+                queue.append(last.right)
+        
+        return last
+
+    def delete_deepest_node(self, deepest):
+        queue = [self.root]
+
+        while queue:
+            node = queue.pop(0)
+
+            if node.left:
+                if node.left == deepest:
+                    node.left = None
+                    return
+                queue.append(node.left)
+
+            if node.right:
+                if node.right == deepest:
+                    node.right = None
+                    return
+                queue.append(node.right)
+
+    def delete_node(self, value):
+        if self.root is None:
+            return False
+
+        if self.root.value == value and not self.root.left and not self.root.right:
+            self.root = None
+            return True
+
+        target = self.search(value)
+        if target is None:
+            return False
+
+        deepest = self.find_deepest_node()
+
+        target.value = deepest.value
+
+        self.delete_deepest_node(deepest)
+
+        return True
 
     def get_tree_to_dict(self): # For website visualization
         return self.root.get_node_to_dict() if self.root else None
