@@ -1,19 +1,19 @@
 class Node:
-    def __init__(self, data, left=None, right=None):
-        self.data = data
+    def __init__(self, value, left=None, right=None):
+        self.value = value
         self.left = None
         self.right = None
     
     def get_node_to_dict(self): # For website visualization
         return {
-            "data": self.data,
+            "value": self.value,
             "left": self.left.get_node_to_dict() if self.left else None,
             "right": self.right.get_node_to_dict() if self.right else None
         }
 
 class BinaryTree:
-    def __init__(self, root_data=None):
-        self.root = Node(root_data) if root_data is not None else None
+    def __init__(self, root_value=None):
+        self.root = Node(root_value) if root_value is not None else None
 
     def insert_left(self, current_node, value):
         if current_node.left is None:
