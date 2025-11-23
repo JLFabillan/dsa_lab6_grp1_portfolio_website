@@ -45,4 +45,4 @@ class BinaryTree:
         pass
 
     def get_tree_to_dict(self): # For website visualization
-        return self.root.to_dict() if self.root else None
+        return self.root.get_node_to_dict() if self.root else None
