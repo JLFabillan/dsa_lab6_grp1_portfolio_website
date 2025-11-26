@@ -3,6 +3,23 @@
 
 {% block content %}
 
+<div class="queue-wrapper">
+    <h2>Binary Tree</h2>
+<p class="page-description">A hierarchical data structure that consists of nodes connected by edges.</p>
 
+<form method="POST" class="queue-form">
+    <div class = "input-container" style="gap: 12px;">
+        <input type="text" name="value" placeholder="Enter value" required>
+        <input type="text" name="target" placeholder="Enter target" required>
+    </div>
+    <div class="button-container">
+        <button type="submit" name="insertleft" class="btn-glow">Insert Left</button>
+        <button type="submit" name="insertright" class="btn-glow">Insert Right</button>
+    </div>
+</form>
+
+<div class="queue-display">
+    <div class="empty-msg">{{ items }}</div>
+</div>
 
 {% endblock %}
