@@ -1,37 +1,59 @@
 class Node:
-    def __init__(self, value, left=None, right=None):
+    """Node structure for the binary tree"""
+    def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
-    
-    def get_node_to_dict(self): # For website visualization
-        return {
-            "value": self.value,
-            "left": self.left.get_node_to_dict() if self.left else None,
-            "right": self.right.get_node_to_dict() if self.right else None
-        }
 
 class BinaryTree:
-    def __init__(self, root_value=None):
-        self.root = Node(root_value) if root_value is not None else None
+    """Binary tree data structure"""
+    def __init__(self):
+        self.root = None
+    
+    def insert_root(self, value):
+        """Insert node as a root"""
+        self.root = Node(value)
 
-    def insert_left(self, current_node, value):
-        if current_node.left is None:
-            current_node.left = Node(value)
+    def insert_left(self, target_node, value):
+        """Insert node to the left of a target node"""
+        if self.root is None:
+            # Tree is empty
+            # Node will become the root
+            self.insert_root(value)
+        if target_node is None:
+            # Target does not exist
+            return
+        if target_node.left is None:
+            # Can insert node to the left of target
+            target_node.left = Node(value)
         else:
-            new_node = Node(value)
-            new_node.left = current_node.left
-            current_node.left = new_node
+            # Target already has node to the left
+            # Push existing left node to lower level
+            node_to_insert = Node(value)
+            node_to_insert.left = target_node.left
+            target_node.left = node_to_insert
 
-    def insert_right(self, current_node, value):
-        if current_node.right is None:
-            current_node.right = Node(value)
+    def insert_right(self, target_node, value):
+        """Insert node to the right of a target node"""
+        if self.root is None:
+            # Tree is empty
+            # Node will become the root
+            self.insert_root(value)
+        if target_node is None:
+            # Target does not exist
+            return
+        if target_node.right is None:
+            # Can insert node to the right of target
+            target_node.right = Node(value)
         else:
-            new_node = Node(value)
-            new_node.right = current_node.right
-            current_node.right = new_node
+            # Target already has node to the right
+            # Push existing right node to lower level
+            node_to_insert = Node(value)
+            node_to_insert.right = target_node.right
+            target_node.right = node_to_insert
 
     def postorder_traversal(self, start, traversal):
+        """Traverse the tree in postorder (left, right, root)"""
         if start:
             traversal = self.postorder_traversal(start.left,traversal)
             traversal = self.postorder_traversal(start.right,traversal)
@@ -39,27 +61,28 @@ class BinaryTree:
         return traversal
 
     def search(self, value):
-        # Will return the first node found
+        """Returns the node if in tree"""
         return self.postorder_search(self.root, value)
 
-    def postorder_search(self, node, value):
-        if node is None:
+    def postorder_search(self, target, value):
+        """Search the tree using postorder traversal"""
+        if target is None:
             # Tree is empty
             return None
         
         # Search left
-        left_node = self.postorder_search(node.left, value)
+        left_node = self.postorder_search(target.left, value)
         if left_node:
             return left_node
         
         # Search right
-        right_node = self.postorder_search(node.right, value)
+        right_node = self.postorder_search(target.right, value)
         if right_node:
             return right_node
         
         # Search node
-        if node.value == value:
-            return node
+        if target.value == value:
+            return target
         
         return None
 
@@ -116,6 +139,3 @@ class BinaryTree:
         self.delete_deepest_node(deepest)
 
         return True
-
-    def get_tree_to_dict(self): # For website visualization
-        return self.root.get_node_to_dict() if self.root else None

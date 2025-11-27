@@ -13,13 +13,27 @@
         <input type="text" name="target" placeholder="Enter target" required>
     </div>
     <div class="button-container">
-        <button type="submit" name="insertleft" class="btn-glow">Insert Left</button>
-        <button type="submit" name="insertright" class="btn-glow">Insert Right</button>
+        <button type="submit" name="insert-left" class="btn-glow">Insert Left</button>
+        <button type="submit" name="insert-right" class="btn-glow">Insert Right</button>
+        <button type="submit" name="delete-node" class="btn-glow">Delete Node</button>
     </div>
 </form>
 
 <div class="queue-display">
-    <div class="empty-msg">{{ items }}</div>
+    {% if tree_data|length == 0 %}
+        <div class="empty-msg">Tree is empty</div>
+    {% else %}
+        {% for data in tree_data %}
+            <div class="queue-outer {% if loop.root %}root{% endif %}">
+                {% if loop.root %}<span class="label">ROOT</span>{% endif %}
+                <div class="queue-box
+                    {% if loop.root %} root{% endif %}
+                ">
+                    {{ data }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
 </div>
 
 {% endblock %}

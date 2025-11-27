@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 queue_structure = Queue()
 deque_structure = DeQueue()
-binary_tree = BinaryTree("0")
+binary_tree = BinaryTree()
 
 @app.route('/')
 def home_redirect():
@@ -156,15 +156,18 @@ def binary_tree_visualizer():
         value = request.form.get("value")
         target = request.form.get("target")
 
-        if "insertleft" in request.form:
+        if "insert-left" in request.form:
             binary_tree.insert_left(binary_tree.search(target), value)
-        
-        if "insertright" in request.form:
+
+        if "insert-right" in request.form:
             binary_tree.insert_right(binary_tree.search(target), value)
+        
+        if "delete-node" in request.form:
+            binary_tree.delete_node(value)
 
     return render_template(
         "binarytreevisualizer.html",
-        items=binary_tree.postorder_traversal(binary_tree.root, ""),
+        tree_data=binary_tree.postorder_traversal(binary_tree.root, "").split(),
         active_page="works"
     )
 
