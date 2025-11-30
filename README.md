@@ -14,6 +14,7 @@
 ```bash
 │
 ├── modules/
+│   ├── binary_tree.py
 │   ├── dequeue.py
 │   └── queue.py
 │
@@ -35,6 +36,7 @@
 │
 ├── templates/
 │   ├── _base.html
+│   ├── binarytreevisualizer.html
 │   ├── contacts.html
 │   ├── dequeuevisualizer.html
 │   ├── home.html
