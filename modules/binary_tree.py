@@ -12,7 +12,8 @@ class BinaryTree:
     
     def insert_root(self, value):
         """Insert node as a root"""
-        self.root = Node(value)
+        new_root = Node(value)
+        self.root = new_root
 
     def insert_left(self, target_node, value):
         """Insert node to the left of a target node"""
@@ -139,3 +140,27 @@ class BinaryTree:
         self.delete_deepest_node(deepest)
 
         return True
+    
+    def serialize_for_visualizer(self):
+        """
+        Return list of nodes for visualizer in level-order with fields:
+        { index, parent, level, value }
+        Uses heap-style indexing: root index 0, left = 2*i+1, right = 2*i+2
+        """
+        if not self.root:
+            return []
+
+        out = []
+        queue = [(self.root, 0, None, 0)]  # (node, index, parent_index, level)
+        idx_map = {self.root: 0}
+
+        while queue:
+            node, index, parent, level = queue.pop(0)
+            out.append({"index": index, "parent": parent if parent is not None else "", "level": level, "value": node.value})
+
+            if node.left:
+                queue.append((node.left, index * 2 + 1, index, level + 1))
+            if node.right:
+                queue.append((node.right, index * 2 + 2, index, level + 1))
+
+        return out

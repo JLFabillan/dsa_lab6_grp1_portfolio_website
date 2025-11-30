@@ -152,22 +152,34 @@ def dequeue_visualizer():
 # Binary Tree visualizer page
 @app.route('/works/binary-tree-visualizer', methods=['GET', 'POST'])
 def binary_tree_visualizer():
+    global binary_tree
+
     if request.method == "POST":
         value = request.form.get("value")
         target = request.form.get("target")
 
-        if "insert-left" in request.form:
-            binary_tree.insert_left(binary_tree.search(target), value)
+    if "insert-root" in request.form and value:
+        binary_tree.insert_root(value)
 
-        if "insert-right" in request.form:
-            binary_tree.insert_right(binary_tree.search(target), value)
-        
-        if "delete-node" in request.form:
-            binary_tree.delete_node(value)
+    if "insert-left" in request.form and value and target:
+        binary_tree.insert_left(binary_tree.search(target), value)
+
+    if "insert-right" in request.form and value and target:
+        binary_tree.insert_right(binary_tree.search(target), value)
+    
+    if "delete-node" in request.form and target:
+        binary_tree.delete_node(target)
+    
+    if "reset-tree" in request.form:
+        binary_tree = BinaryTree()
+
+    # use the new serializer that produces a list of dicts with index/parent/level/value
+    tree_nodes = binary_tree.serialize_for_visualizer()
 
     return render_template(
         "binarytreevisualizer.html",
-        tree_data=binary_tree.postorder_traversal(binary_tree.root, "").split(),
+        tree_nodes=tree_nodes,
+        tree_root=binary_tree.root,
         active_page="works"
     )
 
